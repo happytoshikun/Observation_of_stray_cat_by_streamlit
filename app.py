@@ -8,11 +8,11 @@ from folium.plugins import HeatMap
 
 # Google Sheetsからデータを読み込む関数
 def read_data_from_google_sheets(sheet_url):
-    scope = ['https://spreadsheets.google.com/feeds',
-             'https://www.googleapis.com/auth/drive']
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    gcp_service_account_path = str(st.secrets["gcp_service_account"])
 
     # JSONキーを使用して認証
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(st.secrets["gcp_service_account"], scope)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(gcp_service_account_path, scope)
     gc = gspread.authorize(credentials)
 
     # Google SheetsのURLからシートを開く
