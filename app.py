@@ -20,13 +20,10 @@ def main():
     # 横幅を広げる場合
     st.set_page_config(layout="wide")
 
-    st.title("野良猫の活動記録")
-
-    # Google SheetsのURLを指定
-    sheet_url = 'https://docs.google.com/spreadsheets/d/1BhPzcvr0Ca974wsZxh7VRSi9BmXjyH_gGGFHf-AEcEA/edit#gid=2134842964'
+    st.title("野良猫の行動観察")
 
     # Google Sheetsからデータを読み込む
-    data = read_data_from_google_sheets(sheet_url)
+    data = read_data_from_google_sheets()
 
     # 地図の種類を選択
     genre = st.radio(
