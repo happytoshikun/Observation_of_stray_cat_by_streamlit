@@ -32,20 +32,20 @@ def main():
 
     # 地図を表示
     if genre == '移動ルート':
-        m = folium.Map(location=data.iloc[0], zoom_start=16)
+        m = folium.Map(location=data.iloc[0], zoom_start=17)
         folium.Marker(location=data.iloc[0], popup="start").add_to(m)
         folium.PolyLine(data, color="green", weight=2.5, opacity=1).add_to(m)
         folium.Marker(location=data.iloc[-1], popup="goal",icon=folium.Icon(color='red')).add_to(m)
         st_folium(m, width=1200, height=800)
     
     if genre == '観測ポイント':
-        m = folium.Map(location=data.iloc[0], zoom_start=16)
+        m = folium.Map(location=data.iloc[0], zoom_start=17)
         for i in range(len(data)):
             folium.CircleMarker(location=data.iloc[i],radius=5,color='#B22222').add_to(m)
         st_folium(m, width=1200, height=800)
 
     if genre == 'ヒートマップ':
-        m = folium.Map(location=data.iloc[0], zoom_start=16)
+        m = folium.Map(location=data.iloc[0], zoom_start=17)
         HeatMap(data, radius=20, blur=5).add_to(m)
         st_folium(m, width=1200, height=800)
 
