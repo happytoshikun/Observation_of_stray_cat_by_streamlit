@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit_folium import st_folium
+from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
@@ -8,19 +9,9 @@ from folium.plugins import HeatMap
 
 # Google Sheetsからデータを読み込む関数
 def read_data_from_google_sheets(sheet_url):
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    gcp_service_account_path = str(st.secrets["gcp_service_account"])
+    conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
-    # JSONキーを使用して認証
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(gcp_service_account_path, scope)
-    gc = gspread.authorize(credentials)
-
-    # Google SheetsのURLからシートを開く
-    worksheet = gc.open_by_url(sheet_url).sheet1
-
-    # データをPandas DataFrameに変換
-    data = worksheet.get_all_records()
-    df = pd.DataFrame(data)
+    df = conn.read()
 
     return df
 
