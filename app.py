@@ -8,7 +8,7 @@ import folium
 from folium.plugins import HeatMap
 
 # Google Sheetsからデータを読み込む関数
-def read_data_from_google_sheets(sheet_url):
+def read_data_from_google_sheets():
     conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
     df = conn.read()
