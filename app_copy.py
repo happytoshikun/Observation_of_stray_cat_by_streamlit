@@ -12,7 +12,8 @@ def read_data_from_google_sheets(sheet_url):
              'https://www.googleapis.com/auth/drive']
 
     # JSONキーを使用して認証
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(st.secrets["gcp_service_account"], scope)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(
+        'credentials.json', scope)
     gc = gspread.authorize(credentials)
 
     # Google SheetsのURLからシートを開く
