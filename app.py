@@ -2,8 +2,8 @@ import streamlit as st
 from streamlit_folium import st_folium
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+# import gspread
+# from oauth2client.service_account import ServiceAccountCredentials
 import folium
 from folium.plugins import HeatMap
 
